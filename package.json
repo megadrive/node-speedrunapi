@@ -1,6 +1,6 @@
 {
   "name": "speedrunapi",
-  "version": "1.0.0",
+  "version": "1.0.1-0",
   "description": "An library to use with the SpeedRun.com API.",
   "main": "lib/index",
   "scripts": {
