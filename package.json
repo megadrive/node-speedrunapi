@@ -20,5 +20,22 @@
       "test/"
     ]
   },
-  "api_ver": "v1"
+  "api_ver": "v1",
+  "directories": {
+    "lib": "lib"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/megadrive/node-speedrunapi.git"
+  },
+  "keywords": [
+    "speedruncom",
+    "speedrun",
+    "api",
+    "promise"
+  ],
+  "bugs": {
+    "url": "https://github.com/megadrive/node-speedrunapi/issues"
+  },
+  "homepage": "https://github.com/megadrive/node-speedrunapi#readme"
 }
