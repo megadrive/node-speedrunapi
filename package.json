@@ -1,0 +1,24 @@
+{
+  "name": "speedrunapi",
+  "version": "1.0.0",
+  "description": "An library to use with the SpeedRun.com API.",
+  "main": "lib/index",
+  "scripts": {
+    "test": "ava"
+  },
+  "author": "Megadrive <a.simeon@gmail.com> (http://megadriven.net/)",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^4.0.0",
+    "got": "^7.1.0"
+  },
+  "devDependencies": {
+    "ava": "^0.20.0"
+  },
+  "ava": {
+    "files": [
+      "test/"
+    ]
+  },
+  "api_ver": "v1"
+}
