@@ -16,7 +16,7 @@ This package makes use of `Promises`. No external library is being used, just th
 
 **NOTE: This package does NOT throttle your requests, that is up to you.**
 
-Using some of the examples from the [Speedrun.com docs](srcom-github) page.
+Using some of the examples from the [Speedrun.com docs][srcom-github] page.
 
 ```js
 const SpeedrunAPI = require('speedrunapi')
