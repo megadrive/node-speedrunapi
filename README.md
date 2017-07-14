@@ -82,3 +82,12 @@ sr.leaderboards('yo1yv1q5', 'wz27gz20')
     })
 ```
 
+## authenticated requests
+
+Allowing authenticated requests is simple.
+
+1. See [Authentication on SpeedrunCom](https://github.com/speedruncom/api/blob/master/authentication.md) on how to get your API key.
+
+2. Copy and paste your API Key into the `.env` folder after the `APIKEY=`.
+
+Now you can feel free to make authenticated requests. As of writing, the only endpoints that are authenticated are `profile` and `notifications`. If your API key is invalid or unset, your request will throw an error.
