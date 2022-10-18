@@ -49,7 +49,7 @@ export class Endpoint<T extends Partial<EndpointCommonOptions>> {
    */
   param(param: keyof T, value: T[keyof T]) {
     this._params.set(param, value);
-    this._params.set("max", 23);
+    // this._params.set("max", 23);
 
     return this;
   }
