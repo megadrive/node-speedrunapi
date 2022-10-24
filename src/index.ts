@@ -1,6 +1,7 @@
 import { config } from "dotenv";
 import type { EndpointConstructorOptions } from "./Endpoint";
 import Games from "./endpoints/games";
+import Notifications from "./endpoints/notifications";
 config();
 
 export class SpeedrunApi {
@@ -19,7 +20,7 @@ export class SpeedrunApi {
   //   return new Engines(idOrOpts);
   // }
 
-  games(opts: EndpointConstructorOptions) {
+  games(opts: EndpointConstructorOptions = {}) {
     return new Games(opts);
   }
 
@@ -43,10 +44,9 @@ export class SpeedrunApi {
   //   return new Levels(idOrOpts);
   // }
 
-  // notifications(idOrOpts) {
-  //   const Notifications = require("./endpoints/notifications");
-  //   return new Notifications(idOrOpts);
-  // }
+  notifications(token: string) {
+    return new Notifications(token);
+  }
 
   // platforms(idOrOpts) {
   //   const Platforms = require("./endpoints/platforms");

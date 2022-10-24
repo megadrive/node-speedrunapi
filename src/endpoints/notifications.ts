@@ -1,6 +1,6 @@
-'use strict'
+"use strict";
 
-let AuthEndpoint = require('../AuthEndpoint')
+import { AuthEndpoint } from "../AuthEndpoint";
 
 /**
  * Refer to SpeedrunAPI docs for more information
@@ -9,9 +9,9 @@ let AuthEndpoint = require('../AuthEndpoint')
  * NOTE: This class requires authentication.
  */
 class Notifications extends AuthEndpoint {
-  constructor () {
-    super('notifications', {})
+  constructor(token: string) {
+    super("notifications", { token });
   }
 }
 
-module.exports = Notifications
+export default Notifications;

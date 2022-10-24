@@ -21,11 +21,13 @@ export interface EndpointParameter {
   value: EndpointCommonOptions[keyof EndpointCommonOptions];
 }
 
-export class Endpoint<T extends Partial<EndpointCommonOptions>> {
+export type EndpointConstructorOptions = Partial<EndpointCommonOptions>;
+
+export class Endpoint<T extends EndpointConstructorOptions> {
   protected _id?: string;
   protected _endpoint: string;
   protected _method?: string;
-  protected _params: Map<keyof T, T[keyof T]> = new Map();
+  protected _params: Map<keyof T, string | number | boolean> = new Map();
 
   constructor(endpoint: string, opts: T) {
     opts = opts ?? {};
@@ -47,33 +49,27 @@ export class Endpoint<T extends Partial<EndpointCommonOptions>> {
   /**
    * Adds a SINGLE param to the request.
    */
-  param(param: keyof T, value: T[keyof T]) {
+  param(
+    param: keyof T,
+    value: EndpointCommonOptions[keyof EndpointCommonOptions]
+  ) {
     this._params.set(param, value);
-    // this._params.set("max", 23);
 
     return this;
   }
 
-  test() {
-    this.param("max", 23);
-  }
-
-  // ! @Todo: Typescript is mad
   /**
    * Adds a set of parameters to the request.
    */
-  // params(
-  //   params: Record<
-  //     keyof EndpointCommonOptions,
-  //     EndpointCommonOptions[keyof EndpointCommonOptions]
-  //   >
-  // ) {
-  //   for (const key in params) {
-  //     this._params.set(key, params[key]);
-  //   }
+  params(
+    params: Record<keyof T, EndpointCommonOptions[keyof EndpointCommonOptions]>
+  ) {
+    for (const k in params) {
+      this._params.set(k, params[k]);
+    }
 
-  //   return this;
-  // }
+    return this;
+  }
 
   /**
    * Sets the method.
@@ -118,12 +114,15 @@ export class Endpoint<T extends Partial<EndpointCommonOptions>> {
    * NOTE: Any invalid parameters will be included in the API call but will get
    * ignored server-side.
    */
-  async exec(opts: Record<string, any> = {}) {
-    opts["json"] = true;
+  async exec(axiosOpts: Parameters<typeof axios>["1"] = {}) {
+    // Ensure JSON
+    axiosOpts.headers = {
+      "Content-Type": "application/json",
+    };
     const url = this.build();
 
     try {
-      const res = await axios(url, opts);
+      const res = await axios(url, axiosOpts);
       return res.data;
     } catch (err) {
       throw new SpeedrunAPIError(err);

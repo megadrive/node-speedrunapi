@@ -7,19 +7,33 @@ import { Endpoint, EndpointCommonOptions } from "../Endpoint";
 
 type GamesConstructorOptions = Partial<
   {
-    name: string; // when given, performs a fuzzy search across game names and abbreviations
-    abbreviation: string; // 	when given, performs an exact-match search for this abbreviation
-    released: number; // 	when given, restricts to games released in that year
-    gametype: string; // 	game type ID; when given, restricts to that game type
-    platform: string; //platform ID; when given, restricts to that platform
-    region: string; //region ID; when given, restricts to that region
-    genre: string; //genre ID; when given, restricts to that genre
-    engine: string; //engine ID; when given, restricts to that engine
-    developer: string; //developer ID; when given, restricts to that developer
-    publisher: string; //	publisher ID; when given, restricts to that publisher
-    moderator: string; //moderator ID; when given, only games moderated by that user will be returned
-    romhack: boolean; //legacy parameter, do not use this in new code; whether or not to include games with game types (if this parameter is not set, game types are included; if it is set to a true value, only games with game types will be returned, otherwise only games without game types are returned)
+    /** when given, performs a fuzzy search across game names and abbreviations */
+    name: string;
+    /** when given, performs an exact-match search for this abbreviation */
+    abbreviation: string;
+    /** when given, restricts to games released in that year */
+    released: number;
+    /** 	game type ID; when given, restricts to that game type */
+    gametype: string;
+    /**platform ID; when given, restricts to that platform */
+    platform: string;
+    /**region ID; when given, restricts to that region */
+    region: string;
+    /**genre ID; when given, restricts to that genre */
+    genre: string;
+    /**engine ID; when given, restricts to that engine */
+    engine: string;
+    /** developer ID; when given, restricts to that developer */
+    developer: string;
+    //	publisher ID; when given, restricts to that publisher
+    publisher: string;
+    //moderator ID; when given, only games moderated by that user will be returned
+    moderator: string;
+    //legacy parameter, do not use this in new code; whether or not to include games with game types (if this parameter is not set, game types are included; if it is set to a true value, only games with game types will be returned, otherwise only games without game types are returned)
+    romhack: boolean;
+    /** Include miscellaneous items. */
     miscellaneous: boolean;
+    /** Skip empty items. */
     "skip-empty": boolean;
   } & EndpointCommonOptions
 >;
